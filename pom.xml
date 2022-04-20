@@ -27,13 +27,22 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+
 	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
+				<groupId>com.heroku.sdk</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>3.0.2</version>
+				<configuration>
+					<appName>jenkinsheroku2</appName>
+					<processTypes>
+						<web>java -jar -Dserver.port=$PORT target/${project.build.finalName}.jar</web>
+					</processTypes>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
